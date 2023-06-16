@@ -1,0 +1,20 @@
+<h1>School List</h1>
+<div class="containers">
+  <mat-table [dataSource]="schools" class="container">
+    <ng-container matColumnDef="short_name">
+      <mat-header-cell *matHeaderCellDef>Short Name</mat-header-cell>
+      <mat-cell *matCellDef="let school">{{ school.short_name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="long_name">
+      <mat-header-cell *matHeaderCellDef>Long Name</mat-header-cell>
+      <mat-cell *matCellDef="let school">{{ school.long_name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let school">{{ school.status }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

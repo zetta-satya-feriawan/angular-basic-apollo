@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User Details - Search User</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="search-container">
+      <input
+        type="text"
+        [(ngModel)]="filterLastName"
+        placeholder="Enter last name"
+        class="search-input"
+      />
+      <button (click)="fetchUsers()" class="search-button">Search</button>
+    </div>
+
+    <mat-spinner *ngIf="loading"></mat-spinner>
+
+    <mat-table
+      mat-table
+      [dataSource]="users"
+      class="mat-elevation-z8"
+      *ngIf="!loading && users && users.length"
+    >
+      <ng-container matColumnDef="first_name">
+        <mat-header-cell mat-header-cell *matHeaderCellDef
+          >First Name</mat-header-cell
+        >
+        <mat-cell mat-cell *matCellDef="let user">{{
+          user.first_name
+        }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="last_name">
+        <mat-header-cell mat-header-cell *matHeaderCellDef
+          >Last Name</mat-header-cell
+        >
+        <mat-cell mat-cell *matCellDef="let user">{{
+          user.last_name
+        }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="civility">
+        <mat-header-cell mat-header-cell *matHeaderCellDef
+          >Civility</mat-header-cell
+        >
+        <mat-cell mat-cell *matCellDef="let user">{{ user.civility }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+      ></mat-header-row>
+      <mat-row
+        mat-row
+        *matRowDef="let user; columns: displayedColumns"
+      ></mat-row>
+    </mat-table>
+
+    <div *ngIf="error">error: {{ error.message }}</div>
+  </mat-card-content>
+</mat-card>
