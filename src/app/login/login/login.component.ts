@@ -84,4 +84,7 @@ export class LoginComponent implements OnInit {
   goToUsers() {
     this.router.navigate(["/users"])
   }
+  goToCreatePromo() {
+    this.router.navigate(["promos"])
+  }
 }

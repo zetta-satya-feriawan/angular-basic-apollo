@@ -23,7 +23,16 @@ const routes: Routes = [
         (m) => m.UserDetailsModule
       ),
   },
-
+  {
+    path: "promos",
+    loadChildren: () =>
+      import("./promos/promos.module").then((m) => m.PromosModule),
+  },
+  {
+    path: "promos/create",
+    loadChildren: () =>
+      import("./promos/promos.module").then((m) => m.PromosModule),
+  },
   { path: "**", redirectTo: "schools", pathMatch: "full" },
 ]
 
