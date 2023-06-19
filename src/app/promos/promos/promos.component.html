@@ -1,22 +1,30 @@
 <h1>Promo List</h1>
-<div>
-  <button
-    (click)="goToCreatePromo()"
-    mat-raised-button
-    color="teal"
-    class="create-button"
-  >
-    Create Promos
-  </button>
+
+<div *ngIf="loading" class="loading-container">
+  <mat-spinner diameter="50"></mat-spinner>
 </div>
-<div class="promo-card-container">
-  <mat-card *ngFor="let promo of promos" class="promo-card">
-    <mat-card-header>
-      <mat-card-title>{{ promo.title }}</mat-card-title>
-      <mat-card-subtitle>{{ promo.sub_title }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      {{ promo.description }}
-    </mat-card-content>
-  </mat-card>
+
+<div *ngIf="!loading">
+  <div>
+    <button
+      (click)="goToCreatePromo()"
+      mat-raised-button
+      color="teal"
+      class="create-button"
+    >
+      Create Promos
+    </button>
+  </div>
+
+  <div class="promo-card-container">
+    <mat-card *ngFor="let promo of promos" class="promo-card">
+      <mat-card-header>
+        <mat-card-title>{{ promo.title }}</mat-card-title>
+        <mat-card-subtitle>{{ promo.sub_title }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        {{ promo.description }}
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

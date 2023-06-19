@@ -55,7 +55,6 @@ export class CreatePromoComponent {
       .subscribe(
         ({ data }) => {
           this.loading = false
-          this.promoForm.reset()
           Swal.fire("Success", "Promo successfully created", "success")
           this.router.navigate(["/promos"])
         },
@@ -66,4 +65,5 @@ export class CreatePromoComponent {
         }
       )
   }
+  fetchData() {}
 }

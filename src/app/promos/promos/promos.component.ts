@@ -15,9 +15,13 @@ export class PromosComponent {
   constructor(private apollo: Apollo, private router: Router) {}
 
   ngOnInit(): void {
+    this.fetchData()
+  }
+
+  fetchData(): void {
     this.loading = true
     this.apollo
-      .query<any>({
+      .watchQuery<any>({
         query: gql`
           query {
             GetAllPromos {
@@ -28,7 +32,7 @@ export class PromosComponent {
           }
         `,
       })
-      .subscribe(
+      .valueChanges.subscribe(
         ({ data, loading, errors }) => {
           this.loading = loading
           this.error = errors ? errors[0] : null
